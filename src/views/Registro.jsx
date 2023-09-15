@@ -4,7 +4,6 @@ export default function Registro() {
   return (
     <>
       <h1 className="text-4xl font-bold ">Crear nuevo usuario</h1>
-      <p>Rellena el formulario con los datos</p>
 
       <div className="bg-white shadow-md rounded-md mt-10 px-5 py-10 ">
         <form action="">
