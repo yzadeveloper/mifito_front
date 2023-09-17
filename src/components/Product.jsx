@@ -4,7 +4,7 @@ export default function Product(product) {
     const {name_product, dose_ha} = product
 
   return (
-    <div className="border p-3 shadow">
+    <div className="border p-3 shadow bg-white">
         <div>
             <h3 className="text-2xl font-bold ">{name_product}</h3>
             <p className="mt-5 font-bold text-xl text-lime-800">Dosis general: {dose_ha} L/Ha</p>
