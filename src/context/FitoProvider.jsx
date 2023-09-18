@@ -1,7 +1,8 @@
 import { useEffect } from "react";
 import { createContext, useState } from "react"
+import callAxios from "../config/axios";
 
-import axios from "axios";
+
 
 const FitoContext = createContext();
 
@@ -14,7 +15,7 @@ const FitoProvider = ({children}) => {
     const obtainCategories = async () => {
         try {
             
-            const {data} = await axios(`${import.meta.env.VITE_API_URL}/api/categories`)
+            const {data} = await callAxios('/api/categories')
             setCategories(data.data)
             setcategoryActive(data.data[0])
         } catch (error) {
