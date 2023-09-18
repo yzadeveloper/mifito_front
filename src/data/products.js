@@ -11,6 +11,20 @@ const products = [
       "magrama_pdf": null,
       "ecological": 0,
       
+    },
+
+    {
+      "id_product": 2,
+      "name_product": "Clinic",
+      "id_category": 2,
+      "dose_ha": 1000,
+      "price_ml": "0.02",
+      "technical_comments": "Mezclar con aceite insecticida para mayor efectividad",
+      "customer_comments": "Mata todo lo que toque",
+      "application_instructions": "Aplicación puntual con mochila",
+      "magrama_pdf": null,
+      "ecological": 0,
+      
     }
   ]
 

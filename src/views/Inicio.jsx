@@ -6,6 +6,7 @@ export default function Inicio() {
   
   const { categoryActive} = useFito()
   const products = data.filter(product => product.id_category === categoryActive.id_category)
+  console.log(products)
   return (
     <>
       <h1 className="text-4xl font-bold">{categoryActive.category_name}</h1>
@@ -15,7 +16,8 @@ export default function Inicio() {
         {products.map(product => (
           <Product 
             key={product.id_product}
-            product={product}
+            dose_ha={product.dose_ha}
+            name_product={product.name_product}
           />
         ))}
       </div>
