@@ -16,7 +16,7 @@ const FitoProvider = ({children}) => {
 
     const getCategories = async () => {
         try {
-            const response = await axios('http://localhost:8000/api/categories')
+            const {response} = await axios('http://localhost:8000/api/categories')
             console.log(response)
         } catch (error) {
             console.log(error)
