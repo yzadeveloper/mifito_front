@@ -1,9 +1,26 @@
+import jsPDF from 'jspdf';
 import useFito from "../hooks/useFito"
 import TreatmentProduct from "./TreatmentProduct";
 
 export default function Summary() {
 
   const {treatment} = useFito();
+
+  const generatePDF = () => {
+    const doc = new jsPDF();
+    doc.setFontSize(18);
+    doc.text("Tratamiento", 10, 10);
+    doc.setFontSize(12);
+
+    treatment.forEach((product, index) => {
+      const y = 30 + index * 20; // Espaciado vertical entre elementos
+      doc.text(`Producto: ${product.name_product}`, 10, y);
+      doc.text(`Cantidad: ${product.quantity}L`, 10, y + 10);
+      // Puedes agregar más información aquí según tus necesidades
+    });
+
+    doc.save('tratamiento.pdf'); // Cambia el nombre del archivo según tu preferencia
+  };
 
   return (
     <aside className="w-72 h-screen overflow-y-scroll p-5">
@@ -27,16 +44,14 @@ export default function Summary() {
         )}
       </div>
 
-      <form className="w-full">
+      <form className="w-full" onSubmit={(e) => { e.preventDefault(); generatePDF(); }}>
         <div className="mt-5">
-          <input 
+          <input
             type="submit"
-            value="generar PDF"
-            className="bg-lime-600 hover:bg-lime-800 text-white w-full mt-5 p-3 rounded-sm
-            uppercase font-bold cursor-pointer"
-         />
+            value="Generar PDF"
+            className="bg-lime-600 hover:bg-lime-800 text-white w-full mt-5 p-3 rounded-sm uppercase font-bold cursor-pointer"
+          />
         </div>
-
       </form>
       
     </aside>
