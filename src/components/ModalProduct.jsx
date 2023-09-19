@@ -4,11 +4,11 @@ import useFito from "../hooks/useFito";
 export default function ModalProduct() {
     const { product, handleClickModal, handleAddOrder } = useFito();
     const [quantity, setQuantity] = useState(0);
-    const [hectares, setHectares] = useState("");
-    const [squareMeters, setSquareMeters] = useState("");
-    const [ferrados, setFerrados] = useState("");
+    // const [hectares, setHectares] = useState("");
+    // const [squareMeters, setSquareMeters] = useState("");
+    // const [ferrados, setFerrados] = useState("");
 
-    // Función para calcular la cantidad necesaria de producto en base a la dosis y la extensión del terreno
+    //Función para calcular la cantidad necesaria de producto en base a la dosis y la extensión del terreno
     // const calculateQuantity = () => {
     //     let area;
     //     if (hectares !== "") {
@@ -24,50 +24,109 @@ export default function ModalProduct() {
     //     setQuantity(productQuantity);
     // };
 
-    const calculateQuantity = () => {
-        let productQuantity = 0;
-        if (hectares !== "") {
-            productQuantity = (parseFloat(hectares)) * product.dose_ha; // 1 hectárea
-        } else if (squareMeters !== "") {
-            productQuantity = (parseFloat(squareMeters) / 1000) * product.dose_ha; // conversión a hectárea
-        } else if (ferrados !== "") {
-            productQuantity = parseFloat(ferrados) * 535; // 1 ferrado = 535 metros cuadrados
-        } else {
-            productQuantity = 0;
-        }
+    // Esta Función para calcular la cantidad necesaria de producto en base a la dosis y la extensión del terreno
+    // const calculateQuantity = () => {
+    //     let area;
+    //     if (hectares !== "") {
+    //         area = parseFloat(hectares); // 1 hectárea
+    //     } else if (squareMeters !== "") {
+    //         area = parseFloat(squareMeters) / 10000; // conversión a hectárea
+    //     } else if (ferrados !== "") {
+    //         area = parseFloat(ferrados) * 535; // 1 ferrado = 535 metros cuadrados
+    //     } else {
+    //         area = 0;
+    //     }
+    //     const productQuantity = (area * product.dose_ha);
+    //     setQuantity(productQuantity);
+    // };
+
+    // const calculateQuantity = () => {
+    //     let productQuantity = 0;
+    //     if (hectares !== "") {
+    //         productQuantity = (parseFloat(hectares)) * product.dose_ha; // 1 hectárea
+    //     } else if (squareMeters !== "") {
+    //         productQuantity = (parseFloat(squareMeters) / 1000) * product.dose_ha; // conversión a hectárea
+    //     } else if (ferrados !== "") {
+    //         productQuantity = parseFloat(ferrados) * 535; // 1 ferrado = 535 metros cuadrados
+    //     } else {
+    //         productQuantity = 0;
+    //     }
         
-        setQuantity(productQuantity);
-    };
+    //     setQuantity(productQuantity);
+    // };
 
     // Función para limpiar los otros campos cuando se escribe en uno
-    const handleInputChange = (field, value) => {
-        if (field === "hectares") {
-            setSquareMeters("");
-            setFerrados("");
-        } else if (field === "squareMeters") {
-            setHectares("");
-            setFerrados("");
-        } else if (field === "ferrados") {
-            setHectares("");
-            setSquareMeters("");
-        } 
-        // Actualizar el valor del campo de entrada correspondiente
-        switch (field) {
-            case "hectares":
-                setHectares(value);
-                break;
-            case "squareMeters":
-                setSquareMeters(value);
-                break;
-            case "ferrados":
-                setFerrados(value);
-                break;
+    // const handleInputChange = (field, value) => {
+    //     if (field === "hectares") {
+    //         setSquareMeters("");
+    //         setFerrados("");
+    //     } else if (field === "squareMeters") {
+    //         setHectares("");
+    //         setFerrados("");
+    //     } else if (field === "ferrados") {
+    //         setHectares("");
+    //         setSquareMeters("");
+    //     } 
+    //     // Actualizar el valor del campo de entrada correspondiente
+    //     switch (field) {
+    //         case "hectares":
+    //             setHectares(value);
+    //             break;
+    //         case "squareMeters":
+    //             setSquareMeters(value);
+    //             break;
+    //         case "ferrados":
+    //             setFerrados(value);
+    //             break;
+    //         default:
+    //             break;
+    //     }
+    //     // Calcular la cantidad necesaria cuando se actualice un campo de entrada
+    //     calculateQuantity();
+    // };
+
+    function Calculator() {
+        const [hectares, setHectares] = useState('');
+        const [squareMeters, setSquareMeters] = useState('');
+        const [ferrados, setFerrados] = useState('');
+      
+        const handleInputChange = (fieldName, value) => {
+          switch (fieldName) {
+            case 'hectares':
+              setHectares(value);
+              break;
+            case 'squareMeters':
+              setSquareMeters(value);
+              break;
+            case 'ferrados':
+              setFerrados(value);
+              break;
             default:
-                break;
-        }
-        // Calcular la cantidad necesaria cuando se actualice un campo de entrada
-        calculateQuantity();
-    };
+              break;
+          }
+        };
+        
+
+        const calculateLiters = () => {
+            let totalLiters = 0;
+          
+            // Verificar si se ha proporcionado un valor válido para hectáreas
+            if (!isNaN(hectares) && hectares !== '') {
+              totalLiters += parseFloat(hectares) * 4; // 4 litros por hectárea
+            }
+          
+            // Verificar si se ha proporcionado un valor válido para metros cuadrados
+            if (!isNaN(squareMeters) && squareMeters !== '') {
+              // Puedes agregar la lógica de conversión de metros cuadrados a hectáreas aquí si es necesario
+            }
+          
+            // Verificar si se ha proporcionado un valor válido para ferrados
+            if (!isNaN(ferrados) && ferrados !== '') {
+              // Puedes agregar la lógica de conversión de ferrados a hectáreas aquí si es necesario
+            }
+          
+            setLiters(totalLiters);
+          };
 
     const clearInputs = () => {
         setHectares("");
@@ -191,4 +250,4 @@ export default function ModalProduct() {
             </div>
         </div>
     );
-}
+ }}
