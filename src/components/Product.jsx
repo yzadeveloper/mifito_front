@@ -3,7 +3,7 @@ import useFito from "../hooks/useFito"
 export default function Product(product) {
 
     const { handleClickModal, handleSetProduct } = useFito();
-    const {name_product, dose_ha} = product
+    const {name_product, dose_ha, id_product} = product
 
   return (
     <div className="border p-3 shadow bg-white">

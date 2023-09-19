@@ -50,7 +50,7 @@ export default function ModalProduct() {
         } else if (field === "ferrados") {
             setHectares("");
             setSquareMeters("");
-        }
+        } 
         // Actualizar el valor del campo de entrada correspondiente
         switch (field) {
             case "hectares":

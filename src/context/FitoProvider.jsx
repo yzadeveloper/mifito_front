@@ -27,13 +27,16 @@ const FitoProvider = ({children}) => {
     }
 
     const handleAddOrder = ({id_category, dose_ha, price_ml, technical_comments, customer_comments, application_instructions, magrama_pdf, ecological, ...product}) => {
+        console.log(product);
         setTreatment([...treatment, product])
+        console.log(treatment);
         toast.success('Agregado al Tratamiento')
     }
 
     const handleDeleteProductTreatment = id => {
         const updateTreatment = treatment.filter(product => product.id_product !== id)
         setTreatment(updateTreatment)
+        console.log(updateTreatment)
         toast.success('Eliminado del Tratamiento')
     }
    

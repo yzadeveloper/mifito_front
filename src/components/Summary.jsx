@@ -34,9 +34,9 @@ export default function Summary() {
           <p className="text-center text-2xl">No hay productos en el tratamiento todavía.</p>
 
         ) : (
-          treatment.map(product =>(
+          treatment.map((product, index) =>(
             <TreatmentProduct
-              key={product.id_product}
+              key={`product-${index}`}
               product={product}
               />
           ))

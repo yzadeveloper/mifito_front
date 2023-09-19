@@ -17,6 +17,7 @@ export default function Inicio() {
         {products.map(product => (
           <Product 
             key={product.id_product}
+            id_product={product.id_product}
             dose_ha={product.dose_ha}
             name_product={product.name_product}
             price_ml={product.price_ml}
