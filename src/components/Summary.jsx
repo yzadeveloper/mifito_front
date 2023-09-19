@@ -1,4 +1,5 @@
 import useFito from "../hooks/useFito"
+import TreatmentProduct from "./TreatmentProduct";
 
 export default function Summary() {
 
@@ -16,7 +17,12 @@ export default function Summary() {
           <p className="text-center text-2xl">No hay productos en el tratamiento todavía.</p>
 
         ) : (
-          <p>Si hay algo</p>
+          treatment.map(product =>(
+            <TreatmentProduct
+              key={product.id_product}
+              product={product}
+              />
+          ))
 
         )}
       </div>

@@ -1,5 +1,7 @@
 import { Outlet } from "react-router"
 import Modal from "react-modal"
+import { ToastContainer } from "react-toastify"
+import "react-toastify/dist/ReactToastify.css";
 import Sidebar from "../components/sidebar"
 import Summary from "../components/summary"
 import ModalProduct from "../components/ModalProduct"
@@ -19,8 +21,8 @@ Modal.setAppElement('#root')
 
 export default function Layout() {
 
-  const { modal, handleClickModal } = useFito();
-  console.log(modal)
+  const { modal } = useFito();
+ 
 
   return (
     <>
@@ -32,13 +34,13 @@ export default function Layout() {
           </main>
 
           <Summary />
-          
       </div>
-
      
       <Modal isOpen={modal} style={customStyles}>
           <ModalProduct />
       </Modal>
+
+      <ToastContainer />
      
     </>
   )

@@ -2,7 +2,7 @@ import { useState } from "react";
 import useFito from "../hooks/useFito";
 
 export default function ModalProduct() {
-    const { product, handleClickModal } = useFito();
+    const { product, handleClickModal, handleAddOrder } = useFito();
     const [quantity, setQuantity] = useState(0);
     const [hectares, setHectares] = useState("");
     const [squareMeters, setSquareMeters] = useState("");
@@ -145,6 +145,10 @@ export default function ModalProduct() {
                 <button
                     type="button"
                     className="bg-lime-600 hover:bg-lime-800 text-white font-bold px-5 py-2 mt-5 uppercase rounded"
+                    onClick={() => {
+                        handleAddOrder({...product, quantity})
+                        handleClickModal()
+                    }}
                 >
                     Añadir al Tratamiento
                 </button>

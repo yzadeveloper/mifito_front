@@ -1,4 +1,5 @@
 import { createContext, useState } from "react"
+import { toast } from "react-toastify";
 import { categories as categoriesDB } from "../data/categories"
 
 const FitoContext = createContext();
@@ -24,6 +25,17 @@ const FitoProvider = ({children}) => {
     const handleSetProduct = product => {
         setProduct(product)
     }
+
+    const handleAddOrder = ({id_category, dose_ha, price_ml, technical_comments, customer_comments, application_instructions, magrama_pdf, ecological, ...product}) => {
+        setTreatment([...treatment, product])
+        toast.success('Agregado al Tratamiento')
+    }
+
+    const handleDeleteProductTreatment = id => {
+        const updateTreatment = treatment.filter(product => product.id_product !== id)
+        setTreatment(updateTreatment)
+        toast.success('Eliminado del Tratamiento')
+    }
    
     return (
         <FitoContext.Provider
@@ -35,7 +47,9 @@ const FitoProvider = ({children}) => {
                 handleClickModal,
                 product,
                 handleSetProduct,
-                treatment
+                treatment,
+                handleAddOrder,
+                handleDeleteProductTreatment
             }}
         >{children}</FitoContext.Provider>
 
