@@ -1,6 +1,6 @@
 import { createContext, useState, useEffect } from "react"
 import { toast } from "react-toastify";
-import { categories as categoriesDB } from "../data/categories"
+//import { categories as categoriesDB } from "../data/categories"
 import axios from "axios";
 
 const FitoContext = createContext();
@@ -8,24 +8,27 @@ const FitoContext = createContext();
 
 const FitoProvider = ({children}) => {
 
-    const [categories, setCategories] = useState(categoriesDB)
-    const [categoryActive, setcategoryActive] = useState(categories[0])
+    const [categories, setCategories] = useState([])
+    const [categoryActive, setcategoryActive] = useState({})
     const [modal, setModal] = useState(false)
-    const [product, setProduct] = useState({})
+    
     const [treatment, setTreatment] = useState([])
 
     const getCategories = async () => {
         try {
-            const {response} = await axios('http://localhost:8000/api/categories')
-            console.log(response)
+            const response = await axios('http://localhost:8000/api/categories');
+            setCategories(response.data);
+            setcategoryActive(response.data[0])
         } catch (error) {
             console.log(error)
         }
     }
 
     useEffect(() => {
-        getCategories();
+        getCategories(setCategories);
     }, [])
+
+    
     
     const handleClickCategory = id => {
         const category = categories.filter(category => category.id_category === id)[0]
