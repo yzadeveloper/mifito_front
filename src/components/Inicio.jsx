@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
-import { todasCategorias } from "../funciones/funciones"
+import { todasCategorias } from "../services/funciones"
+import Tableproducts from "./Tableproducts"
 
 const Inicio = () => {
 
@@ -10,6 +11,7 @@ const Inicio = () => {
     },[])
   return (
     <>
+        <div>
         {categorias != null ? (
             categorias.map(categoria => (
                 <div key={categoria.id_category}>
@@ -17,6 +19,12 @@ const Inicio = () => {
                 </div>
             ))
         ) : ('cargando...')}
+
+        </div>
+
+        <div>
+            <Tableproducts />
+        </div>
     
     
     </>

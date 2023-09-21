@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import { useParams } from "react-router"
-import { unicaCategoria } from "../funciones/funciones"
+import { unicaCategoria } from "../services/funciones"
 
 const Categoria = () => {
 
