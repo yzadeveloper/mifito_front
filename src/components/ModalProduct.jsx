@@ -26,55 +26,61 @@ export default function ModalProduct() {
 
     const calculateQuantity = () => {
         let productQuantity = 0;
-        if (hectares !== "") {
-            productQuantity = (parseFloat(hectares)) * product.dose_ha; // 1 hectárea
-        } else if (squareMeters !== "") {
-            productQuantity = (parseFloat(squareMeters) / 1000) * product.dose_ha; // conversión a hectárea
-        } else if (ferrados !== "") {
-            productQuantity = parseFloat(ferrados) * 535; // 1 ferrado = 535 metros cuadrados
+      
+        // Utilizar Number() para convertir los valores en números
+        const hectaresValue = Number(hectares);
+        const squareMetersValue = Number(squareMeters);
+        const ferradosValue = Number(ferrados);
+      
+        if (!isNaN(hectaresValue) && hectaresValue !== 0) {
+          productQuantity = hectaresValue * product.dose_ha;
+        } else if (!isNaN(squareMetersValue) && squareMetersValue !== 0) {
+          productQuantity = (squareMetersValue / 1000) * product.dose_ha;
+        } else if (!isNaN(ferradosValue) && ferradosValue !== 0) {
+          productQuantity = ((ferradosValue * 535) /10000) * product.dose_ha;
         } else {
-            productQuantity = 0;
+          productQuantity = 0;
         }
-        
+      
         setQuantity(productQuantity);
-    };
-
-    // Función para limpiar los otros campos cuando se escribe en uno
-    const handleInputChange = (field, value) => {
-        if (field === "hectares") {
-            setSquareMeters("");
-            setFerrados("");
-        } else if (field === "squareMeters") {
-            setHectares("");
-            setFerrados("");
-        } else if (field === "ferrados") {
-            setHectares("");
-            setSquareMeters("");
-        } 
+      };
+      
+      // Función para manejar cambios en los campos de entrada
+      const handleInputChange = (field, value) => {
         // Actualizar el valor del campo de entrada correspondiente
         switch (field) {
-            case "hectares":
-                setHectares(value);
-                break;
-            case "squareMeters":
-                setSquareMeters(value);
-                break;
-            case "ferrados":
-                setFerrados(value);
-                break;
-            default:
-                break;
+          case "hectares":
+            setHectares(value);
+            setSquareMeters("");
+            setFerrados("");
+            break;
+          case "squareMeters":
+            setSquareMeters(value);
+            setHectares("");
+            setFerrados("");
+            break;
+          case "ferrados":
+            setFerrados(value);
+            setHectares("");
+            setSquareMeters("");
+            break;
+          default:
+            break;
         }
+      
         // Calcular la cantidad necesaria cuando se actualice un campo de entrada
         calculateQuantity();
-    };
-
-    const clearInputs = () => {
+      };
+      
+      // Función para limpiar los campos y reiniciar la cantidad
+      const clearInputs = () => {
         setHectares("");
         setSquareMeters("");
         setFerrados("");
-        setQuantity(0); // También debes reiniciar la cantidad al limpiar los campos
-    };
+        setQuantity(0);
+      };
+      
+      
 
     return (
         <div className="md:flex gap-10 mx-3 p-3">
