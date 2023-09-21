@@ -146,7 +146,7 @@ export default function ModalProduct() {
                     </button>
                 </div>
                 <div className="flex gap-2 mt-5">
-                    <p className="mt-5 font-bold text-xl text-lime-800">Cantidad de {product.name_product} necesaria<br/> para ese terreno:<br/> <span className="text-red-500">{quantity} litros</span></p>
+                    <p className="mt-5 font-bold text-xl text-lime-800">Cantidad de {product.name_product} necesaria<br/> para ese terreno:<br/> <span className="text-red-500">{quantity} litros. <br/>Equivalente a ml:  {quantity * 1000} ml</span></p>
                 </div>
                 <button
                     type="button"
