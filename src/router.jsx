@@ -5,6 +5,7 @@ import Inicio from './views/Inicio'
 import Login from './views/Login'
 import Registro from './views/Registro'
 import ProductIndex from './components/crudProduct/ProductIndex'
+import ProductCreate from './components/crudProduct/ProductCreate'
 
 const router = createBrowserRouter([
     {
@@ -41,6 +42,11 @@ const router = createBrowserRouter([
     {
         path: '/productos',
         element: <ProductIndex />
+    },
+
+    {
+        path: '/productos/crear',
+        element: <ProductCreate />
     }
 
 ])
