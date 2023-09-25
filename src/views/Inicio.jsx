@@ -1,12 +1,28 @@
-import { products as data} from "../data/products"
+//import { products as data} from "../data/products"
+import { useState, useEffect } from "react";
 import Product from "../components/Product"
 import useFito from "../hooks/useFito"
+import axios from "axios";
 
 export default function Inicio() {
+
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+      const getProducts = async () => {
+          const apiProducts = await axios.get("http://localhost:8000/api/products");
+          setProducts(apiProducts.data);
+      };
+      getProducts()
+
+  }, [])
   
   const { categoryActive} = useFito()
-  const products = data.filter(product => product.id_category === categoryActive.id_category)
-  console.log(products)
+  //const products = data.filter(product => product.id_category === categoryActive.id_category)
+  //console.log(products)
+
+  const productFilter = products.filter(product => product.id_category === categoryActive.id_category)
+  console.log(productFilter)
   return (
     <>
       <h1 className="text-4xl font-bold mt-5">{categoryActive.category_name}</h1>
@@ -26,6 +42,7 @@ export default function Inicio() {
             application_instructions={product.application_instructions}
             magrama_pdf={product.magrama_pdf}
             ecological={product.ecological}
+            id_category={product.id_category}
           />
         ))}
       </div>

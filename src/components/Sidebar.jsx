@@ -1,10 +1,20 @@
+
 import useFito from "../hooks/useFito"
 import Category from "./Category"
+
 
 
 export default function Sidebar() {
 
   const { categories } = useFito()
+
+  
+  
+  
+
+ 
+
+  
   return (
     <aside className="md:w-84">
       <div className="p-4">

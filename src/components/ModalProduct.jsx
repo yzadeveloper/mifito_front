@@ -6,43 +6,37 @@ export default function ModalProduct() {
     const [quantity, setQuantity] = useState(0);
     const [hectares, setHectares] = useState("");
     const [squareMeters, setSquareMeters] = useState("");
+    console.log(squareMeters);
     const [ferrados, setFerrados] = useState("");
+    
 
-    // Función para calcular la cantidad necesaria de producto en base a la dosis y la extensión del terreno
-    // const calculateQuantity = () => {
-    //     let area;
-    //     if (hectares !== "") {
-    //         area = parseFloat(hectares); // 1 hectárea
-    //     } else if (squareMeters !== "") {
-    //         area = parseFloat(squareMeters) / 10000; // conversión a hectárea
-    //     } else if (ferrados !== "") {
-    //         area = parseFloat(ferrados) * 535; // 1 ferrado = 535 metros cuadrados
-    //     } else {
-    //         area = 0;
-    //     }
-    //     const productQuantity = (area * product.dose_ha) * 10;
-    //     setQuantity(productQuantity);
-    // };
-
+    
     const calculateQuantity = () => {
         let productQuantity = 0;
+        
       
         // Utilizar Number() para convertir los valores en números
-        const hectaresValue = Number(hectares);
-        const squareMetersValue = Number(squareMeters);
-        const ferradosValue = Number(ferrados);
+        const hectaresValue = hectares;
+        
+        const squareMetersValue = squareMeters / 10000;
+        
+        const ferradosValue = (ferrados * 535) /10000;
+       
       
-        if (!isNaN(hectaresValue) && hectaresValue !== 0) {
+        if (hectaresValue !== 0) {
           productQuantity = hectaresValue * product.dose_ha;
-        } else if (!isNaN(squareMetersValue) && squareMetersValue !== 0) {
-          productQuantity = (squareMetersValue / 1000) * product.dose_ha;
-        } else if (!isNaN(ferradosValue) && ferradosValue !== 0) {
-          productQuantity = ((ferradosValue * 535) /10000) * product.dose_ha;
+        } else if (squareMetersValue !== 0) {
+          productQuantity = squareMetersValue * product.dose_ha;
+        } else if (ferradosValue !== 0) {
+          productQuantity = ferradosValue * product.dose_ha;
         } else {
           productQuantity = 0;
         }
+
+        
       
         setQuantity(productQuantity);
+        
       };
       
       // Función para manejar cambios en los campos de entrada
@@ -64,8 +58,9 @@ export default function ModalProduct() {
             setHectares("");
             setSquareMeters("");
             break;
-          default:
+            default:
             break;
+         
         }
       
         // Calcular la cantidad necesaria cuando se actualice un campo de entrada
@@ -134,7 +129,13 @@ export default function ModalProduct() {
                         Limpiar Campos
                     </button>
 
-                    
+                    <button
+                        type="button"
+                        onClick={setQuantity}
+                        className="bg-indigo-400 hover:bg-red-600 text-white font-bold px-3 py-1 rounded"
+                    >
+                        Calcular
+                    </button>
                 </div>
             </div>
             <div className="md:w-1/3">
