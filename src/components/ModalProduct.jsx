@@ -6,7 +6,7 @@ export default function ModalProduct() {
     const [quantity, setQuantity] = useState(0);
     const [hectares, setHectares] = useState("");
     const [squareMeters, setSquareMeters] = useState("");
-    console.log(squareMeters);
+    //console.log(squareMeters);
     const [ferrados, setFerrados] = useState("");
     
 
@@ -80,7 +80,7 @@ export default function ModalProduct() {
     return (
         <div className="md:flex gap-10 mx-3 p-3">
             <div className="md:w-2/4">
-                <h1 className="text-3xl font-bold mt-2">{product.name_product}</h1>
+                <h1 className="text-3xl text-gray-700 font-bold mt-2">{product.name_product}</h1>
                 <p className="mt-5 font-bold text-xl text-lime-800">Dosis general: {product.dose_ha} L/Ha</p>
                 <p className="mt-2 font-bold text-s text-lime-800">Coste aproximado ml: {product.price_ml}€</p>
                 <hr className="bg-lime-600 mt-2" />
@@ -132,7 +132,7 @@ export default function ModalProduct() {
                     <button
                         type="button"
                         onClick={setQuantity}
-                        className="bg-indigo-400 hover:bg-red-600 text-white font-bold px-3 py-1 rounded"
+                        className="bg-indigo-400 hover:bg-red-600 text-white font-bold px-3 py-1 rounded mx-5"
                     >
                         Calcular
                     </button>
@@ -151,7 +151,7 @@ export default function ModalProduct() {
                 </div>
                 <button
                     type="button"
-                    className="bg-lime-600 hover:bg-lime-800 text-white font-bold px-5 py-2 mt-5 uppercase rounded"
+                    className="bg-violet-800 hover:bg-[radial-gradient(ellipse_at_bottom_left,_var(--tw-gradient-stops))] from-violet-900 via-violet-600 to-violet-900 text-white font-bold px-5 py-2 mt-5 uppercase rounded"
                     onClick={() => {
                         handleAddOrder({...product, quantity})
                         handleClickModal()

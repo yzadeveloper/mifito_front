@@ -7,9 +7,6 @@ import Category from "./Category"
 export default function Sidebar() {
 
   const { categories } = useFito()
-
-  
-  
   
 
  
@@ -32,7 +29,8 @@ export default function Sidebar() {
       </div>
 
       <div className="my-5 px-5">
-        <button type="button" className="text-center bg-lime-600 hover:bg-lime-800 text-white font-bold text-lg uppercase rounded-sm w-full p-3 truncate">
+
+        <button type="button" className=" text-center border border-violet-600 bg-white  text-violet-800 font-bold text-lg uppercase rounded-lg w-full p-3 truncate ">
           Cerrar sesión
         </button>
 

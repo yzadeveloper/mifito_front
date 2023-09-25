@@ -18,19 +18,19 @@ export default function Inicio() {
   }, [])
   
   const { categoryActive} = useFito()
-  //const products = data.filter(product => product.id_category === categoryActive.id_category)
+  //const products = products.filter(product => product.id_category === categoryActive.id_category)
   //console.log(products)
 
   const productFilter = products.filter(product => product.id_category === categoryActive.id_category)
-  console.log(productFilter)
+  //console.log(productFilter)
   return (
     <>
-      <h1 className="text-4xl font-bold mt-5">{categoryActive.category_name}</h1>
-      <hr className="bg-lime-600 mt-2" />
-      <p className="text-2xl my-10">Elige un producto para calcular:</p>
+      <h1 className="text-4xl text-gray-700 font-bold mt-5">{categoryActive.category_name}</h1>
+      <hr className="bg-violet-600 mt-2" />
+      <p className="text-2xl text-gray-800 my-10">Elige un producto para calcular:</p>
 
       <div className="grid gap-4 grid-cols-1 md:grid-cols-2 xl:grid-cols-3">
-        {products.map(product => (
+        {productFilter.map(product => (
           <Product 
             key={product.id_product}
             id_product={product.id_product}

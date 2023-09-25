@@ -26,6 +26,7 @@ const FitoProvider = ({children}) => {
     const handleClickCategory = id => {
         const category = categories.filter(category => category.id_category === id)[0]
         setcategoryActive(category)
+        console.log(category)
     }
 
     const handleClickModal = () => {

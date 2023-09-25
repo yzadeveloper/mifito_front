@@ -24,14 +24,14 @@ export default function Summary() {
 
   return (
     <aside className="w-72 h-screen overflow-y-scroll p-5">
-      <h1 className="text-4xl font-bold mt-4">Tratamiento</h1>
+      <h1 className="text-4xl text-gray-700 font-bold mt-4">Tratamiento</h1>
       <hr className="bg-lime-600 mt-2" />
 
-      <p className="text-xl my-5">Aquí puedes ver los productos añadidos al tratamiento.</p>
+      <p className="text-xl text-gray-800 my-5">Aquí puedes ver los productos añadidos al tratamiento.</p>
 
       <div className="py-10">
         {treatment.length === 0 ? (
-          <p className="text-center text-2xl">No hay productos en el tratamiento todavía.</p>
+          <p className="text-center text-gray-800 text-2xl">No hay productos en el tratamiento todavía.</p>
 
         ) : (
           treatment.map((product, index) =>(
@@ -49,7 +49,7 @@ export default function Summary() {
           <input
             type="submit"
             value="Generar PDF"
-            className="bg-lime-600 hover:bg-lime-800 text-white w-full mt-5 p-3 rounded-sm uppercase font-bold cursor-pointer"
+            className="bg-[radial-gradient(ellipse_at_bottom_left,_var(--tw-gradient-stops))] from-violet-900 via-violet-600 to-violet-900 text-white w-full mt-5 p-3 rounded-lg uppercase font-bold cursor-pointer"
           />
         </div>
       </form>
