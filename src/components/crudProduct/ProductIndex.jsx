@@ -57,7 +57,7 @@ export default function ProductIndex() {
                                     return (
                                         <tr key={product.id_product} className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 text-xl">
                                             <td className="px-6 py-4">{product.name_product}</td>
-                                            <td className="px-6 py-4">{product.id_category}</td>
+                                            <td className="px-6 py-4">{product.categories.category_name}</td>
                                             <td className="px-6 py-4">{product.dose_ha}</td>
                                             <td className="px-6 py-4">{product.magrama_pdf}</td>
                                             <td className="px-6 py-4">{product.ecological}</td>

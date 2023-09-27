@@ -25,7 +25,7 @@ export default function Summary() {
   return (
     <aside className="w-72 h-screen overflow-y-scroll p-5">
       <h1 className="text-4xl text-gray-700 font-bold mt-4">Tratamiento</h1>
-      <hr className="bg-lime-600 mt-2" />
+      <hr className="bg-violet-600 mt-2" />
 
       <p className="text-xl text-gray-800 my-5">Aquí puedes ver los productos añadidos al tratamiento.</p>
 
