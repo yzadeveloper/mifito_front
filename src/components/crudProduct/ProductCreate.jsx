@@ -1,6 +1,18 @@
+import axios from "axios";
+import { useState, useEffect } from "react";
 
 
 export default function ProductCreate() {
+
+  const [categorylist, setCategorylist] = useState([]);
+
+  useEffect(() => {
+    axios.get("http://localhost:8000/api/categories").then(response=>{
+      setCategorylist(response.data);
+    });
+
+  }, []);
+
   return (
     <div className="mt-12">
       <form action="" className="max-w-4xl mx-auto p-4 bg-white shadow-md rounded-sm">
@@ -13,8 +25,17 @@ export default function ProductCreate() {
 
           <div className="mb-4">
             <label htmlFor="name" className="block mb-2 text-xl font-medium">Categoría</label>
-            <input type="text" name="" id=""
-              className="border border-gray-300 text-gray-900 text-xl rounded-md w-full p-3" placeholder="ej: herbicida..." />
+            <select id="countries" className=" border border-gray-300 text-gray-700 text-xl rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                <option defaultValue>Selecciona categoría</option>
+                {
+                  categorylist.map( (item) => {
+                    return (
+                      <option value={item.id_category} key={item.id_category}>{item.category_name}</option>
+                    )
+                  })
+                }
+                
+          </select>
           </div>
 
           <div className="mb-4">
