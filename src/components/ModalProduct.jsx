@@ -81,13 +81,13 @@ export default function ModalProduct() {
         <div className="md:flex gap-10 mx-3 p-3">
             <div className="md:w-2/4">
                 <h1 className="text-3xl text-gray-700 font-bold mt-2">{product.name_product}</h1>
-                <p className="mt-5 font-bold text-xl text-lime-800">Dosis general: {product.dose_ha} L/Ha</p>
-                <p className="mt-2 font-bold text-s text-lime-800">Coste aproximado ml: {product.price_ml}€</p>
-                <hr className="bg-lime-600 mt-2" />
-                <p className="mt-5 font-bold text-xl text-lime-800">Rellena solo 1 campo:</p>
+                <p className="mt-5 font-bold text-xl text-gray-800">Dosis general: {product.dose_ha} L/Ha</p>
+                <p className="mt-2 font-bold text-s text-gray-800">Coste aproximado ml: {product.price_ml}€</p>
+                <hr className="bg-gray-600 mt-2" />
+                <p className="mt-5 font-bold text-xl text-gray-800">Rellena solo 1 campo:</p>
                 <div className="flex gap-2 mt-2">
                     <div className="">
-                        <label htmlFor="hectares" className="mt-5 font-bold text-s text-lime-800">Hectáreas:</label>
+                        <label htmlFor="hectares" className="mt-5 font-bold text-s text-gray-800">Hectáreas:</label>
                         <input
                             className="mt-2 w-full p-2 bg-gray-200 border"
                             type="text"
@@ -98,7 +98,7 @@ export default function ModalProduct() {
                         />
                     </div>
                     <div className="">
-                        <label htmlFor="squareMeters" className="mt-5 font-bold text-s text-lime-800">Metros Cuadrados:</label>
+                        <label htmlFor="squareMeters" className="mt-5 font-bold text-s text-gray-800">Metros Cuadrados:</label>
                         <input
                             className="mt-2 w-full p-2 bg-gray-200 border"
                             type="text"
@@ -109,7 +109,7 @@ export default function ModalProduct() {
                         />
                     </div>
                     <div className="">
-                        <label htmlFor="ferrados" className="mt-5 font-bold text-s text-lime-800">Ferrados:</label>
+                        <label htmlFor="ferrados" className="mt-5 font-bold text-s text-gray-800">Ferrados:</label>
                         <input
                             className="mt-2 w-full p-2 bg-gray-200 border"
                             type="text"
@@ -124,18 +124,18 @@ export default function ModalProduct() {
                     <button
                         type="button"
                         onClick={clearInputs}
-                        className="bg-red-500 hover:bg-red-600 text-white font-bold px-3 py-1 rounded"
+                        className="  text-center border border-violet-600 bg-white  text-violet-800 font-bold text-md uppercase rounded-lg  p-3 truncate"
                     >
                         Limpiar Campos
                     </button>
 
-                    <button
+                    {/* <button
                         type="button"
                         onClick={setQuantity}
                         className="bg-indigo-400 hover:bg-red-600 text-white font-bold px-3 py-1 rounded mx-5"
                     >
                         Calcular
-                    </button>
+                    </button> */}
                 </div>
             </div>
             <div className="md:w-1/3">
@@ -147,11 +147,11 @@ export default function ModalProduct() {
                     </button>
                 </div>
                 <div className="flex gap-2 mt-5">
-                    <p className="mt-5 font-bold text-xl text-lime-800">Cantidad de {product.name_product} necesaria<br/> para ese terreno:<br/> <span className="text-red-500">{quantity} litros. <br/>Equivalente a ml:  {quantity * 1000} ml</span></p>
+                    <p className="mt-5 font-bold text-xl text-gray-800">Cantidad de {product.name_product} necesaria<br/> para esa extensión de terreno:<br/> <span className="text-lime-700 ">{quantity} litros. <br/>Equivalente a ml:  {quantity * 1000} ml</span></p>
                 </div>
                 <button
                     type="button"
-                    className="bg-violet-800 hover:bg-[radial-gradient(ellipse_at_bottom_left,_var(--tw-gradient-stops))] from-violet-900 via-violet-600 to-violet-900 text-white font-bold px-5 py-2 mt-5 uppercase rounded"
+                    className="bg-violet-800 hover:bg-[radial-gradient(ellipse_at_bottom_left,_var(--tw-gradient-stops))] from-violet-900 via-violet-600 to-violet-900 text-white font-bold px-5 py-2 mt-5 uppercase rounded-lg"
                     onClick={() => {
                         handleAddOrder({...product, quantity})
                         handleClickModal()
@@ -167,7 +167,7 @@ export default function ModalProduct() {
                     {product.technical_comments == "" ? (
                     <p className="text-xl">No hay comentarios del técnico.</p>
                     ) : (
-                     <p className="text-xl mt-5"><span className=" font-bold text-xl text-lime-800">Comentarios del técnico: </span><br />{product.technical_comments}</p>
+                     <p className="text-xl mt-5"><span className=" font-bold text-xl text-gray-800">Comentarios del técnico: </span><br />{product.technical_comments}</p>
                     )}
                 </div>
 
@@ -175,7 +175,7 @@ export default function ModalProduct() {
                     {product.customer_comments == "" ? (
                     <p className="text-xl">No hay recordatorio para el cliente.</p>
                     ) : (
-                     <p className="text-xl mt-5"><span className=" font-bold text-xl text-lime-800">Recordar al cliente: </span><br />{product.customer_comments}</p>
+                     <p className="text-xl mt-5"><span className=" font-bold text-xl text-gray-800">Recordar al cliente: </span><br />{product.customer_comments}</p>
                     )}
                 </div>
 
@@ -183,7 +183,7 @@ export default function ModalProduct() {
                     {product.magrama_pdf == null ? (
                     <p className="text-xl">No hay ficha técnica.</p>
                     ) : (
-                     <p className="text-xl mt-5"><span className=" font-bold text-xl text-lime-800">Ficha Magrama: </span>{product.magrama_pdf}</p>
+                     <p className="text-xl mt-5"><span className=" font-bold text-xl text-gray-800">Ficha Magrama: </span>{product.magrama_pdf}</p>
                     )}
                 </div>
 
@@ -191,7 +191,7 @@ export default function ModalProduct() {
                     {product.application_instructions == "" ? (
                     <p className="text-center text-xl">No hay instrucciones de aplicación específicas.</p>
                     ) : (
-                     <p className="text-xl mt-5"><span className=" font-bold text-xl text-lime-800">Aplicación: </span><br />{product.application_instructions}</p>
+                     <p className="text-xl mt-5"><span className=" font-bold text-xl text-gray-800">Aplicación: </span><br />{product.application_instructions}</p>
                     )}
                 </div>
 

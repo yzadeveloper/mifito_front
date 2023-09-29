@@ -19,8 +19,8 @@ export default function ProductCreate() {
     <>
       <Navbar></Navbar>
         <div className="mt-12">
-          <caption className=" p-5 text-xs uppercase font-bold text-left text-gray-700 bg-white dark:text-white dark:bg-gray-800">
-          </caption>
+          <div className=" p-5 text-xs uppercase font-bold text-left text-gray-700 bg-white dark:text-white dark:bg-gray-800">
+          </div>
           <form action="" className="max-w-4xl mx-auto p-4 bg-white rounded-sm">
             <p className="p-8 text-xl font-bold text-gray-700 uppercase dark:bg-gray-700 dark:text-gray-400">Introduce los datos del nuevo producto</p>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4">
@@ -32,7 +32,7 @@ export default function ProductCreate() {
 
               <div className="mb-4">
                 <label htmlFor="name" className="block mb-2 text-xl font-medium">Categoría</label>
-                <select id="countries" className=" border border-gray-300 text-gray-700 text-xl rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                <select id="id_category"  className=" border border-gray-300 text-gray-700 text-xl rounded-md focus:ring-violet-500 focus:border-violet-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-violet-500 dark:focus:border-violet-500">
                     <option defaultValue>Selecciona categoría</option>
                     {
                       categorylist.map( (item) => {

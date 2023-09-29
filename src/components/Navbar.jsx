@@ -11,7 +11,11 @@ export default function Navbar() {
                 </a>
                 <div className="flex md:order-2">
                 <div className="flex justify-end m-2 p-2">
-                    <Link to="/productos/crear" className="px-4 py-2 font-bold text-lg uppercase bg-violet-500 hover:bg-violet-700 text-white rounded-md mx-5">Crear Producto</Link>
+                    <Link to="/auth/registro" className="px-4 py-2 font-bold text-md uppercase bg-violet-500 hover:bg-violet-700 text-white rounded-lg mx">Crear Usuario</Link>
+
+                </div>
+                <div className="flex justify-end m-2 p-2">
+                    <Link to="/productos/crear" className="px-4 py-2 font-bold text-md uppercase bg-violet-500 hover:bg-violet-700 text-white rounded-lg mx">Crear Producto</Link>
 
                 </div>
                     

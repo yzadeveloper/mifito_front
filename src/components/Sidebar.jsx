@@ -1,6 +1,7 @@
 
 import useFito from "../hooks/useFito"
 import Category from "./Category"
+import { Link } from "react-router-dom"
 
 
 
@@ -30,7 +31,9 @@ export default function Sidebar() {
 
       <div className="my-5 px-5">
 
-        <button type="button" className=" text-center border border-violet-600 bg-white  text-violet-800 font-bold text-lg uppercase rounded-lg w-full p-3 truncate ">
+        <Link to="/productos" ><button className="bg-[radial-gradient(ellipse_at_bottom_left,_var(--tw-gradient-stops))] from-violet-900 via-violet-600 to-violet-900 text-white w-full mt-5 p-3 rounded-lg uppercase font-bold cursor-pointer">Panel de administración</button></Link>
+
+        <button type="button" className=" mt-4 text-center border border-violet-600 bg-white  text-violet-800 font-bold text-lg uppercase rounded-lg w-full p-3 truncate ">
           Cerrar sesión
         </button>
 

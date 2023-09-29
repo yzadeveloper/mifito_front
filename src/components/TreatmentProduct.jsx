@@ -14,7 +14,7 @@ export default function TreatmentProduct({product}) {
           <div className="flex justify-between gap-2 pb-4">
             <button
               type="button"
-              className="bg-red-700 p-2 text-white rounded-md font-bold uppercase shadow-md text-center"
+              className="bg-orange-400 p-2 text-white rounded-md font-bold uppercase shadow-md text-center"
               onClick={() => handleDeleteProductTreatment(product.id_product)}
             >
               <svg

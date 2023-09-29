@@ -71,8 +71,7 @@ export default function Registro() {
           <input 
               type="submit"
               value="Crear Cuenta"
-              className="bg-lime-600 hover:bg-lime-800 text-white w-full mt-5 p-3 rounded-sm
-              uppercase font-bold cursor-pointer " 
+              className="bg-[radial-gradient(ellipse_at_bottom_left,_var(--tw-gradient-stops))] from-violet-900 via-violet-600 to-violet-900 text-white w-full mt-5 p-3 rounded-lg uppercase font-bold cursor-pointer"
           />
         </form>
 

@@ -15,8 +15,8 @@ export default function Summary() {
     treatment.forEach((product, index) => {
       const y = 30 + index * 20; // Espaciado vertical entre elementos
       doc.text(`Producto: ${product.name_product}`, 10, y);
-      doc.text(`Cantidad: ${product.quantity}L`, 10, y + 10);
-      // Puedes agregar más información aquí según tus necesidades
+      doc.text(`Cantidad: ${product.quantity}Litros`, 10, y + 10);
+      
     });
 
     doc.save('tratamiento.pdf'); // Cambia el nombre del archivo según tu preferencia
