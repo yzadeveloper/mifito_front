@@ -5,73 +5,66 @@ export default function ModalProduct() {
     const { product, handleClickModal, handleAddOrder } = useFito();
     const [quantity, setQuantity] = useState('');
     const [terreno, setTerreno] = useState('');
-    const [dosisGeneral, setDosisGeneral] = useState('');
-    const setCalculo = useState('');
-    
     
       const calcHectareas = () => {
         let numero1 = parseFloat(terreno);
-        let numero2 = parseFloat(dosisGeneral);
-        setCalculo(numero1 * numero2);
-        console.log(calcHectareas);
+        let numero2 = parseFloat(product.dose_ha);
+        setQuantity(numero1 * numero2);
       };
     
       const calcMetros = () => {
         let numero1 = parseFloat(terreno);
-        let numero2 = parseFloat(dosisGeneral);
+        let numero2 = parseFloat(product.dose_ha);
         setQuantity((numero1 / 10000) * numero2);
       };
     
       const calcFerrados = () => {
         let numero1 = parseFloat(terreno);
-        let numero2 = parseFloat(dosisGeneral);
+        let numero2 = parseFloat(product.dose_ha);
         setQuantity(((numero1 * 535) / 10000) * numero2);
       };
-       
       
-      // Función para limpiar los campos y reiniciar la cantidad
       const clearInputs = () => {
-        setTerreno("");
-        setQuantity("");
+        setTerreno(0);
+        setQuantity(0);
       };
-      
-      setQuantity(setCalculo);
 
     return (
         <div className="md:flex gap-10 mx-3 p-3">
             <div className="md:w-2/4">
                 <h1 className="text-3xl text-gray-700 font-bold mt-2">{product.name_product}</h1>
 
-                <p id="dosisGeneral" className="mt-5 font-bold text-xl text-gray-800"
-                    value={dosisGeneral}
-                    onChange={(e) => setDosisGeneral(e.target.value)}
-                > {product.dose_ha} </p>
+                <input readOnly id="dosisGeneral" className="mt-5 font-bold text-xl text-gray-800"
+                    value={`Dosis general: ${product.dose_ha} L/Ha`}
+                 />
 
                 <p className="mt-2 font-bold text-s text-gray-800">Coste aproximado ml: {product.price_ml}€</p>
                 <hr className="bg-gray-600 mt-2" />
                 <p className="mt-5 font-bold text-xl text-gray-800">Extensión de terreno a tratar:</p>
                 <div className="flex gap-2 mt-2">
-                    <div className="">
-                        <label htmlFor="hectares" className="mt-5 font-bold text-s text-gray-800">Escribe un número:</label>
+                    <div className="flex ">
+                        
                         <input
-                            className="mt-2 w-full p-2 bg-gray-200 border"
+                            className="mt-2  p-2 bg-gray-200 border"
                             type="number"
                             id="terreno"
+                            placeholder="Escribe un número..."
                             value={terreno}
                             onChange={(e) => setTerreno(e.target.value)}
                             
                         />
-                    </div>
-                    
-                </div>
-                <div className="mt-5">
-                    <button
+                        <button
                         type="button"
                         onClick={clearInputs}
                         className="  text-center border border-violet-600 bg-white  text-violet-800 font-bold text-md uppercase rounded-lg  p-3 truncate"
                     >
-                        Limpiar Campos
+                        borrar
                     </button>
+                    </div>
+                    
+                </div>
+                <div className="mt-5">
+                    
 
                     <button onClick={calcHectareas}>Hectáreas</button>
                     <button onClick={calcMetros}>Metros cuadrados</button>
