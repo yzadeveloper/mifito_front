@@ -87,7 +87,12 @@ export default function ModalProduct() {
                     </button>
                 </div>
                 <div className="flex gap-2 mt-5">
-                    <p className="mt-5 font-bold text-xl text-gray-800"> {product.name_product} necesario<br/> para {terreno} {selectedMeasure ? selectedMeasure : 'selecciona medida'}:<br/> <span id="calculo" className="text-lime-700 ">{quantity} L <br/>Equivalente a ml:  {quantity * 1000} ml</span></p>
+                    <p className="mt-5 font-bold text-xl text-gray-800"> {product.name_product} necesario<br/> para {terreno} {selectedMeasure ? selectedMeasure : 'selecciona medida'}:<br/> 
+                    <span id="calculo" className="text-lime-700 ">{quantity >= 1 ? (
+                        <p className="text-xl mt-2">{quantity} L</p>
+                        ) : (
+                         <p className="text-xl mt-2">{quantity * 1000} ml</p>
+                        )}</span></p>
                 </div>
                 <button
                     type="button"
