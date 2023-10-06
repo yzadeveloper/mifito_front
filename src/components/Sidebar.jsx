@@ -9,10 +9,6 @@ export default function Sidebar() {
 
   const { categories } = useFito()
   
-
- 
-
-  
   return (
     <aside className="md:w-84">
       <div className="p-4">

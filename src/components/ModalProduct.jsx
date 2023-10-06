@@ -5,28 +5,33 @@ export default function ModalProduct() {
     const { product, handleClickModal, handleAddOrder } = useFito();
     const [quantity, setQuantity] = useState('');
     const [terreno, setTerreno] = useState('');
+    const [selectedMeasure, setSelectedMeasure] = useState('');
     
       const calcHectareas = () => {
         let numero1 = parseFloat(terreno);
         let numero2 = parseFloat(product.dose_ha);
         setQuantity(numero1 * numero2);
+        setSelectedMeasure('hectareas');
       };
     
       const calcMetros = () => {
         let numero1 = parseFloat(terreno);
         let numero2 = parseFloat(product.dose_ha);
         setQuantity((numero1 / 10000) * numero2);
+        setSelectedMeasure('metros cuadrados');
       };
     
       const calcFerrados = () => {
         let numero1 = parseFloat(terreno);
         let numero2 = parseFloat(product.dose_ha);
         setQuantity(((numero1 * 535) / 10000) * numero2);
+        setSelectedMeasure('ferrados');
       };
       
       const clearInputs = () => {
         setTerreno(0);
         setQuantity(0);
+        setSelectedMeasure('');
       };
 
     return (
@@ -56,7 +61,7 @@ export default function ModalProduct() {
                         <button
                         type="button"
                         onClick={clearInputs}
-                        className="  text-center border border-violet-600 bg-white  text-violet-800 font-bold text-md uppercase rounded-lg  p-3 truncate"
+                        className=" mx-5 border border-violet-600 bg-white  text-violet-800 font-semibold uppercase rounded-lg p-3 "
                     >
                         borrar
                     </button>
@@ -66,9 +71,9 @@ export default function ModalProduct() {
                 <div className="mt-5">
                     
 
-                    <button onClick={calcHectareas}>Hectáreas</button>
-                    <button onClick={calcMetros}>Metros cuadrados</button>
-                    <button onClick={calcFerrados}>Ferrados</button>
+                    <button onClick={calcHectareas} id="hectareas" className="bg-lime-500 hover:ring hover:ring-violet-900 focus:outline-none focus:ring focus:ring-violet-900 rounded-md p-1 font-semibold">Hectáreas</button>
+                    <button onClick={calcMetros} id="metros" className="bg-lime-500 hover:ring hover:ring-violet-900 focus:outline-none focus:ring focus:ring-violet-900 rounded-md p-1 font-semibold mx-3">Metros cuadrados</button>
+                    <button onClick={calcFerrados} id="ferrados" className="bg-lime-500 hover:ring hover:ring-violet-900 focus:outline-none focus:ring focus:ring-violet-900 rounded-md p-1 font-semibold">Ferrados</button>
 
                    
                 </div>
@@ -82,7 +87,7 @@ export default function ModalProduct() {
                     </button>
                 </div>
                 <div className="flex gap-2 mt-5">
-                    <p className="mt-5 font-bold text-xl text-gray-800">Cantidad de {product.name_product} necesaria<br/> para esa extensión de terreno:<br/> <span id="calculo" className="text-lime-700 ">{quantity} litros. <br/>Equivalente a ml:  {quantity * 1000} ml</span></p>
+                    <p className="mt-5 font-bold text-xl text-gray-800"> {product.name_product} necesario<br/> para {terreno} {selectedMeasure ? selectedMeasure : 'selecciona medida'}:<br/> <span id="calculo" className="text-lime-700 ">{quantity} L <br/>Equivalente a ml:  {quantity * 1000} ml</span></p>
                 </div>
                 <button
                     type="button"
